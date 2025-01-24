@@ -33,14 +33,10 @@ echo "Backup completed: ${DESTINATION_FOLDER}/${BACKUP_FILE}"
 # Find and delete backups older than the retention period
 find "$DESTINATION_FOLDER" -name "${BASE_NAME}-*.tar.gz" | while read -r file; do
     # Extract the date from the filename
-    FILE_DATE=$(echo "$file" | awk -F '-' '{print $(NF-1)}')
-    echo $FILE_DATE
+    FILE_DATE=$(echo "$file" | awk -F "[-.]" -v 'OFS=-' '{print $4, $3, $2}')
     FILE_DATE=$(date -d "$FILE_DATE" +%s)
-    echo $FILE_DATE
     CURRENT_DATE=$(date +%s)
-    echo $CURRENT_DATE
     AGE=$(( (CURRENT_DATE - FILE_DATE) / 86400 ))
-    echo $AGE
     
     if [ "$AGE" -gt "$RETENTION_DAYS" ]; then
         rm "$file"
