@@ -1,6 +1,7 @@
-# Ignore venv/ & PDFs/ directory
+# Ignore directories:
 venv/
 PDFs/
 
-# Ignore output.txt file
+# Ignore files:
 output.txt
+.env
