@@ -23,3 +23,8 @@ script takes a telegram chat and extracts all the URLs from it sending them to a
 - 
 ### backup-metadata.sh 
 - creates a backup and scans for old files based on metadata
+
+## PowerShell scripts
+
+### backup-wsl-distro.ps1
+- creates a backup and scans for old files so only the newest backup files remain
