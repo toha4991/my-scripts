@@ -20,9 +20,18 @@ script takes a telegram chat and extracts all the URLs from it sending them to a
 
 ### backup-filename-date.sh 
 - creates a backup and scans for old files based on date in filename
-- 
+
 ### backup-metadata.sh 
 - creates a backup and scans for old files based on metadata
+
+### start-containers-clean.sh
+in my wsl distro after I stop/delete a container the ports are still binded by a process like in the following output:
+```
+COMMAND   PID         USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+exe     32765                12u  IPv6 300758      0t0  TCP *:5000 (LISTEN)
+exe     44522                12u  IPv6 427540      0t0  TCP *:http-alt (LISTEN)
+```
+the script helps to automate the process of cleaning up so I can re-run containers on the same ports
 
 ## PowerShell scripts
 
