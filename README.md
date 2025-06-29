@@ -25,8 +25,8 @@ script takes a telegram chat and extracts all the URLs from it sending them to a
 - creates a backup and scans for old files based on metadata
 
 ### start-containers-clean.sh
-in my wsl distro after I stop/delete a container the ports are still binded by a process like in the following output:
-```
+in wsl distro after a container is stoped/deleted the ports are still binded by a process like in the following output:
+```bash
 COMMAND   PID         USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
 exe     32765                12u  IPv6 300758      0t0  TCP *:5000 (LISTEN)
 exe     44522                12u  IPv6 427540      0t0  TCP *:http-alt (LISTEN)
@@ -37,3 +37,9 @@ the script helps to automate the process of cleaning up so I can re-run containe
 
 ### backup-wsl-distro.ps1
 - creates a backup and scans for old files so only the newest backup files remain
+
+## Batch scripts
+
+### start-ubuntu-vm.bat & stop-ubuntu-vm.bat
+
+the `start` script runs a virtual box machine (i.e. ubuntu server) in background and the `stop` script stops it
