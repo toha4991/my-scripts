@@ -1,1 +1,0 @@
-# a script that takes a telegram chat and extract all the links from it
