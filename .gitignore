@@ -4,4 +4,5 @@ PDFs/
 
 # Ignore files:
 output.txt
+output.json
 .env
