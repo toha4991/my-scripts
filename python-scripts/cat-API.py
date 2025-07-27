@@ -14,6 +14,7 @@
 import requests
 import json # Added to handle JSON output properly
 import os # Added to handle file paths
+import boto3 # Added to handle AWS S3 operations
 
 from urllib.parse import urlparse # Added to parse URLs
 
@@ -27,10 +28,11 @@ def get_images_urls():
             print(f"Failed to fetch images: {response.status_code}")
     return images
 
-def download_images(images):
+# Function to download images and save them locally in folders based on their format
+def download_images(images): 
     for image in images:
         url = image['url']
-        response = requests.get(url)
+        
         # Extract file extension
         path = urlparse(url).path
         ext = os.path.splitext(path)[1].lower().strip('.')  # e.g., 'jpg', 'png'
@@ -52,11 +54,33 @@ def download_images(images):
         except Exception as e:
             print(f"Failed to download {url}: {e}")
 
+def upload_to_s3(images, bucket_name, s3_directory="catAPI-folder"):
+    s3 = boto3.client('s3')
+    
+    for image in images:
+        url = image['url']
+        path = urlparse(url).path
+        filename = os.path.basename(path)
+        ext = os.path.splitext(path)[1].lower().strip('.')
+        
+        # Create folder structure in S3
+        s3_key = f"{s3_directory}/{ext}/{filename}"
+        
+        # Download the image
+        img_data = requests.get(url).content
+        
+        # Upload to S3
+        s3.put_object(Bucket=bucket_name, Key=s3_key, Body=img_data)
+        print(f"Uploaded {filename} to S3 bucket {bucket_name} under {s3_key}")
+
 imgs = get_images_urls()
 
 # Save to a JSON file
-with open("output.json", "w") as f:
-    json.dump(imgs, f, indent=4)
+# with open("output.json", "w") as f:
+#     json.dump(imgs, f, indent=4)
 
 # Download images into folders by format
-download_images(imgs)
+# download_images(imgs)
+
+# Upload to S3 bucket
+upload_to_s3(imgs, "gorant-bucket")
