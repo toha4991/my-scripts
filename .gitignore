@@ -1,6 +1,7 @@
 # Ignore directories:
 venv/
 PDFs/
+images/
 
 # Ignore files:
 output.txt
