@@ -4,6 +4,7 @@ PDFs/
 images/
 
 # Ignore files:
+activate-venv.sh
 output.txt
 output.json
 .env
