@@ -9,6 +9,12 @@
 # If "width" or "height" more than 2000 pixels picture should be scanned by https://docs.scanii.com/
 #
 #########################################################################################################################################
+#
+# Script requires: 
+#       SCANNII_API_KEY, SCANNII_API_SECRET to be setup as environment variables.
+#       AWS credentials to be setup using `aws configure sso`
+#
+#########################################################################################################################################
 
 import requests                     # Added to handle HTTP requests
 import json                         # Added to handle JSON output properly
