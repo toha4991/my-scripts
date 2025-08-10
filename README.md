@@ -2,6 +2,8 @@
 
 this are the scripts that I used in my everyday work
 
+## Python scripts
+
 ### PDF to Text converter
 
 To run the script use the following command:
@@ -16,6 +18,15 @@ where the first argument is the path to PDF file, the second is number of the pa
 
 script takes a telegram chat and extracts all the URLs from it sending them to a csv file
 
+### add-double-brackets.py
+
+A script that adds double brackets of user's choice to a string.
+
+```bash
+ Example:
+    input: "Ethernet, ARP, PPP, Frame Relay"
+    output: "[[Ethernet]], [[ARP]], [[PPP]], [[Frame]], [[Relay]]"
+```
 ## Bash scripts
 
 ### backup-filename-date.sh 
